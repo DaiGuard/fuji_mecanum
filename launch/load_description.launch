@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- robot spawn parameters -->
+  <arg name="robot_namespace" default="/" />
+  
+  <!-- robot urdf load -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro '$(find mecanum_wheel_description)/urdf/mecanum_wheel.urdf.xacro' --inorder" />
+
+</launch>

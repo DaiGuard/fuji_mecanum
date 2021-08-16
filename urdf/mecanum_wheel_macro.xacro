@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<robot name="mecanum_wheel" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find mecanum_wheel_description)/urdf/wheel.xacro" />
+  <xacro:include filename="$(find mecanum_wheel_description)/urdf/rollers.xacro"  />
+
+  <xacro:macro name="mecanum_wheel" params="name side">  
+    
+    <xacro:wheel_link name="${name}" side="${side}" />    
+    <xacro:rollers_link name="${name}" side="${side}" />
+
+  </xacro:macro>
+
+</robot>

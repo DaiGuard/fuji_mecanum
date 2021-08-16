@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<robot name="wheel" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="roller_loop" params="name num loop" >
+
+    <xacro:if value="${loop}">
+
+      <link name="${name}_roller${loop}_link">
+        <visual>
+          <origin xyz="0 0 0" rpy="0 0 0" />
+          <geometry>
+            <mesh filename="package://mecanum_wheel_description/mesh/visual/roller.dae" scale="1 1 1" />
+          </geometry>        
+        </visual>
+        <collision>
+          <geometry>
+            <mesh filename="package://mecanum_wheel_description/mesh/collision/roller.stl" scale="1 1 1" />
+          </geometry>
+        </collision>
+        <inertial>
+          <origin xyz="0 0 0" />
+          <mass value="1.0" />
+          <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                  iyy="1.0" iyz="0.0"
+                  izz="1.0" />
+        </inertial>
+      </link>
+
+      <joint name="${name}_roller${loop}_joint" type="fixed">
+        <origin xyz="0 ${0.0895*cos(radians(360/num*(loop-1)))} ${0.0895*sin(radians(360/num*(loop-1)))}" rpy="${radians(360/num*(loop-1))} ${radians(45)} 0 "/>
+        <parent link="${name}_wheel_link" />
+        <child link="${name}_roller${loop}_link" />
+      </joint>
+    
+      <xacro:roller_loop name="${name}" num="${num}" loop="${loop - 1}" />
+      
+    </xacro:if>
+
+  </xacro:macro>
+
+  <xacro:macro name="rollers_link" params="name side">
+
+    <xacro:roller_loop name="${name}" num="5" loop="5" />
+
+  </xacro:macro>
+
+</robot>

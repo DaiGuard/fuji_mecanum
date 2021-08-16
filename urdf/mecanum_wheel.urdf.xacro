@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<robot name="mecanum_wheel_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find mecanum_wheel_description)/urdf/mecanum_wheel_macro.xacro" />
+
+  <xacro:mecanum_wheel name="front_right" side="1" />
+  <xacro:mecanum_wheel name="front_left" side="-1" />
+
+  <link name="map">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+  </link>
+
+  <joint name="virtual_map_right" type="fixed">
+    <origin xyz="0.1 0.2 0" />
+    <parent link="map" />
+    <child link="front_right_wheel_link" />
+  </joint>
+
+  <joint name="virtual_map_left" type="fixed">
+    <origin xyz="-0.1 0.2 0" />
+    <parent link="map" />
+    <child link="front_left_wheel_link" />
+  </joint>
+
+</robot>
