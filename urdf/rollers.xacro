@@ -1,7 +1,19 @@
 <?xml version="1.0" ?>
 <robot name="wheel" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <xacro:macro name="roller_loop" params="name num loop" >
+  <xacro:macro name="roller_origin" params="th side" >
+
+    <xacro:if value="${side==1}">
+      <origin xyz="0 ${0.0895*cos(th)} ${0.0895*sin(th)}" rpy="${atan(-tan(th)*sqrt(2.0))} ${asin(cos(th)/sqrt(2.0))} ${atan(sin(th))}"/>
+    </xacro:if>
+
+    <xacro:if value="${side==-1}">
+      <origin xyz="0 ${0.0895*cos(th)} ${0.0895*sin(th)}" rpy="${atan(-tan(th)*sqrt(2.0))} ${asin(-cos(th)/sqrt(2.0))} ${atan(-sin(th))}"/>
+    </xacro:if>
+
+  </xacro:macro>
+
+  <xacro:macro name="roller_loop" params="name side num loop" >
 
     <xacro:if value="${loop}">
 
@@ -27,21 +39,19 @@
       </link>
 
       <joint name="${name}_roller${loop}_joint" type="fixed">
-        <origin xyz="0 ${0.0895*cos(radians(360/num*(loop-1)))} ${0.0895*sin(radians(360/num*(loop-1)))}" rpy="${radians(360/num*(loop-1))} ${radians(45)} 0 "/>
+        <xacro:roller_origin th="${radians(360/num*(loop-1))}" side="${side}"/>
         <parent link="${name}_wheel_link" />
         <child link="${name}_roller${loop}_link" />
       </joint>
     
-      <xacro:roller_loop name="${name}" num="${num}" loop="${loop - 1}" />
+      <xacro:roller_loop name="${name}" side="${side}" num="${num}" loop="${loop - 1}" />
       
     </xacro:if>
 
   </xacro:macro>
 
   <xacro:macro name="rollers_link" params="name side">
-
-    <xacro:roller_loop name="${name}" num="5" loop="5" />
-
+    <xacro:roller_loop name="${name}" side="${side}" num="15" loop="15" />    
   </xacro:macro>
 
 </robot>
