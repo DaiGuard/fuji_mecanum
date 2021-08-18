@@ -38,7 +38,7 @@
         </inertial>
       </link>
 
-      <joint name="${name}_roller${loop}_joint" type="fixed">
+      <joint name="${name}_roller${loop}_joint" type="continuous">
         <xacro:roller_origin th="${radians(360/num*(loop-1))}" side="${side}"/>
         <parent link="${name}_wheel_link" />
         <child link="${name}_roller${loop}_link" />
