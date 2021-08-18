@@ -8,6 +8,7 @@ gazebo model description.
 
 ## Usage
 
+How to build fuji mecanum in your robot.
 
 ```xml
 <?xml version="1.0" ?>
@@ -37,3 +38,28 @@ gazebo model description.
 
 </robot>
 ```
+
+## Test
+
+- Gazebo simulation
+
+  ```bash
+  # Gazemo GUI launch
+  $ roslaunch fuji_mecanum gazebo_test_robot_launch
+  ```
+
+  ```bash
+  # mecanum control node
+  $ rosrun fuji_mecanum test_mecanum_robot.py
+  ```
+
+  ```bash
+  $ rostopic pub /cmd_vel geometry_msgs/Twist "linear:
+  x: 1.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0" 
+  ```
