@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<robot name="mecanum_wheel_robot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find mecanum_wheel_description)/urdf/mecanum_wheel_macro.xacro" />
+
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="0.7 0.4 0.3" />
+      </geometry>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.7 0.4 0.3" />
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" />
+      <mass value="10.0" />
+      <inertia ixx="0.83333" ixy="0.0" ixz="0.0"
+              iyy="1.9333" iyz="0.0"
+              izz="2.1667" />
+    </inertial>
+    
+  </link>
+
+  <gazebo reference="base_link">
+    <mu1 value="0.6"/>
+    <mu2 value="0.6"/>
+    <kp value="10000000.0" />
+    <kd value="1.0" />
+    <fdir1 value="0 1 0"/>
+  </gazebo>
+
+  <xacro:mecanum_wheel name="front_right" side="1"  interface="hardware_interface/EffortJointInterface"/>
+  <xacro:mecanum_wheel name="front_left"  side="-1" interface="hardware_interface/EffortJointInterface"/>
+  <xacro:mecanum_wheel name="rear_right"  side="-1" interface="hardware_interface/EffortJointInterface"/>
+  <xacro:mecanum_wheel name="rear_left"   side="1"  interface="hardware_interface/EffortJointInterface"/>
+
+  <joint name="front_right_joint" type="continuous">    
+    <origin xyz="0.3 -0.25 -0.1" rpy="0 0 ${pi/2}" />
+    <axis xyz="1 0 0" />
+    <parent link="base_link" />
+    <child link="front_right_wheel_link" />    
+  </joint>
+
+  <joint name="front_left_joint" type="continuous">
+    <origin xyz="0.3 0.25 -0.1" rpy="0 0 ${pi/2}" />
+    <axis xyz="1 0 0" />
+    <parent link="base_link" />
+    <child link="front_left_wheel_link" />
+  </joint>
+
+  <joint name="rear_right_joint" type="continuous">
+    <origin xyz="-0.3 -0.25 -0.1" rpy="0 0 ${pi/2}" />
+    <axis xyz="1 0 0" />
+    <parent link="base_link" />
+    <child link="rear_right_wheel_link" />
+  </joint>
+
+  <joint name="rear_left_joint" type="continuous">
+    <origin xyz="-0.3 0.25 -0.1" rpy="0 0 ${pi/2}" />
+    <axis xyz="1 0 0" />
+    <parent link="base_link" />
+    <child link="rear_left_wheel_link" />
+  </joint>
+
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+      <legacyModeNS>true</legacyModeNS>
+    </plugin>
+  </gazebo>
+
+</robot>

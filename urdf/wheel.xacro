@@ -16,12 +16,21 @@
       </collision>
       <inertial>
         <origin xyz="0 0 0" />
-        <mass value="1.0" />
-        <inertia ixx="1.0" ixy="0.0" ixz="0.0"
-                iyy="1.0" iyz="0.0"
-                izz="1.0" />
+        <mass value="2.0" />
+        <inertia ixx="0.042025" ixy="0.0" ixz="0.0"
+                iyy="0.024279" iyz="0.0"
+                izz="0.024279" />
       </inertial>
     </link>
+
+    <gazebo reference="${name}_wheel_link">
+      <mu1 value="0.6"/>
+      <mu2 value="0.6"/>
+      <kp value="10000000.0" />
+      <kd value="1.0" />
+      <fdir1 value="0 1 0"/>
+    </gazebo>
+
   </xacro:macro>
 
 </robot>

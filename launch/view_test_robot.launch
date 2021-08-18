@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- robot spawn parameters -->
+  <arg name="robot_namespace" default="/" />
+  
+  <!-- robot urdf load -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro '$(find mecanum_wheel_description)/test/test_robot.urdf.xacro' --inorder" />
+
+  <node name="joint_state_publisher"
+        pkg="joint_state_publisher" type="joint_state_publisher"
+        respawn="false" output="screen" />
+
+  <node name="robot_state_publisher"
+        pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen" />
+
+  <node name="rviz"
+        pkg="rviz" type="rviz"
+        args="-d $(find mecanum_wheel_description)/rviz/view_test_robot.rviz"
+        respawn="false" output="screen" />
+
+</launch>

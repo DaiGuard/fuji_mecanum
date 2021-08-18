@@ -31,10 +31,10 @@
         </collision>
         <inertial>
           <origin xyz="0 0 0" />
-          <mass value="1.0" />
-          <inertia ixx="1.0" ixy="0.0" ixz="0.0"
-                  iyy="1.0" iyz="0.0"
-                  izz="1.0" />
+          <mass value="0.3" />
+          <inertia ixx="0.00024000" ixy="0.0" ixz="0.0"
+                  iyy="0.00076000" iyz="0.0"
+                  izz="0.00076000" />
         </inertial>
       </link>
 
@@ -42,7 +42,16 @@
         <xacro:roller_origin th="${radians(360/num*(loop-1))}" side="${side}"/>
         <parent link="${name}_wheel_link" />
         <child link="${name}_roller${loop}_link" />
+        <dynamics damping="0.01" friction="0.0001" />        
       </joint>
+
+      <gazebo reference="${name}_roller${loop}_link">
+        <mu1 value="0.6"/>
+        <mu2 value="0.6"/>
+        <kp value="10000000.0" />
+        <kd value="1.0" />
+        <fdir1 value="0 1 0"/>
+      </gazebo>
     
       <xacro:roller_loop name="${name}" side="${side}" num="${num}" loop="${loop - 1}" />
       

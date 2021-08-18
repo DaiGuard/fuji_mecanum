@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<launch>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+  </include>
+
+  <!-- robot urdf load -->
+  <param name="robot_description"
+    command="$(find xacro)/xacro '$(find mecanum_wheel_description)/test/test_robot.urdf.xacro' --inorder" />
+
+  <node name="robot_state_publisher"
+        pkg="robot_state_publisher" type="robot_state_publisher"
+        respawn="false" output="screen" />
+
+  <!-- Load controller configuration -->
+  <rosparam command="load" file="$(find mecanum_wheel_description)/config/controller.yaml" />
+
+  <!-- Spawn controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+        args="joint_state_controller front_right_controller front_left_controller rear_right_controller rear_left_controller" />
+
+  <!-- Spawn robot in gazebo -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"
+      args="-z 1.0
+            -unpause
+            -urdf
+            -model robot
+            -param robot_description" 
+      respawn="false" 
+      output="screen" />
+
+</launch>

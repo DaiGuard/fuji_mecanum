@@ -4,10 +4,26 @@
   <xacro:include filename="$(find mecanum_wheel_description)/urdf/wheel.xacro" />
   <xacro:include filename="$(find mecanum_wheel_description)/urdf/rollers.xacro"  />
 
-  <xacro:macro name="mecanum_wheel" params="name side">  
+  <xacro:macro name="mecanum_wheel" params="name side interface">  
     
     <xacro:wheel_link name="${name}" side="${side}" />    
     <xacro:rollers_link name="${name}" side="${side}" />
+
+    <transmission name="${name}_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="${name}_joint">
+        <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+        <!-- <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> -->
+        <hardwareInterface>${interface}</hardwareInterface>
+      </joint>
+      <actuator name="${name}_motor">
+        <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+        <!-- <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> -->
+        <hardwareInterface>${interface}</hardwareInterface>
+        <mechanismReduction>1</mechanismReduction>
+      </actuator>
+    </transmission>
+
 
   </xacro:macro>
 
