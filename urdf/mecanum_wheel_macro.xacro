@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <robot name="mecanum_wheel" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find mecanum_wheel_description)/urdf/wheel.xacro" />
-  <xacro:include filename="$(find mecanum_wheel_description)/urdf/rollers.xacro"  />
+  <xacro:include filename="$(find fuji_mecanum)/urdf/wheel.xacro" />
+  <xacro:include filename="$(find fuji_mecanum)/urdf/rollers.xacro"  />
 
   <xacro:macro name="mecanum_wheel" params="name side interface">  
     
@@ -12,18 +12,13 @@
     <transmission name="${name}_trans">
       <type>transmission_interface/SimpleTransmission</type>
       <joint name="${name}_joint">
-        <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
-        <!-- <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> -->
         <hardwareInterface>${interface}</hardwareInterface>
       </joint>
       <actuator name="${name}_motor">
-        <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
-        <!-- <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface> -->
         <hardwareInterface>${interface}</hardwareInterface>
         <mechanismReduction>1</mechanismReduction>
       </actuator>
     </transmission>
-
 
   </xacro:macro>
 

@@ -6,7 +6,7 @@
   
   <!-- robot urdf load -->
   <param name="robot_description"
-    command="$(find xacro)/xacro '$(find mecanum_wheel_description)/test/test_robot.urdf.xacro' --inorder" />
+    command="$(find xacro)/xacro '$(find fuji_mecanum)/test/test_robot.urdf.xacro' --inorder" />
 
   <node name="joint_state_publisher"
         pkg="joint_state_publisher" type="joint_state_publisher"
@@ -18,7 +18,7 @@
 
   <node name="rviz"
         pkg="rviz" type="rviz"
-        args="-d $(find mecanum_wheel_description)/rviz/view_test_robot.rviz"
+        args="-d $(find fuji_mecanum)/rviz/view_test_robot.rviz"
         respawn="false" output="screen" />
 
 </launch>

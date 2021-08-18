@@ -21,12 +21,12 @@
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0" />
           <geometry>
-            <mesh filename="package://mecanum_wheel_description/mesh/visual/roller.dae" scale="1 1 1" />
+            <mesh filename="package://fuji_mecanum/mesh/visual/roller.dae" scale="1 1 1" />
           </geometry>        
         </visual>
         <collision>
           <geometry>
-            <mesh filename="package://mecanum_wheel_description/mesh/collision/roller.stl" scale="1 1 1" />
+            <mesh filename="package://fuji_mecanum/mesh/collision/roller.stl" scale="1 1 1" />
           </geometry>
         </collision>
         <inertial>

@@ -16,7 +16,7 @@ gazebo model description.
   ....
 
   <!-- include mecanum_wheel macro -->
-  <xacro:include filename="$(find mecanum_wheel_description)/urdf/mecanum_wheel_macro.xacro" />
+  <xacro:include filename="$(find fuji_mecanum)/urdf/mecanum_wheel_macro.xacro" />
   <!-- load macro -->
   <!-- name: link name -> ${name}_wheel_link -->
   <!-- side: mecanum wheel direct 1: right, -1: left -->

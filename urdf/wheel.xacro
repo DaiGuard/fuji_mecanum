@@ -6,12 +6,12 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://mecanum_wheel_description/mesh/visual/wheel.dae" scale="${side} 1 1" />
+          <mesh filename="package://fuji_mecanum/mesh/visual/wheel.dae" scale="${side} 1 1" />
         </geometry>        
       </visual>
       <collision>
         <geometry>
-          <mesh filename="package://mecanum_wheel_description/mesh/collision/wheel.stl" scale="${side} 1 1" />
+          <mesh filename="package://fuji_mecanum/mesh/collision/wheel.stl" scale="${side} 1 1" />
         </geometry>
       </collision>
       <inertial>

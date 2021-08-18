@@ -44,9 +44,7 @@ def cmdVelCB(data):
 
   wv.data = wheel_vel[3]
   rl_pub.publish(wv)
-
-  print(wheel_vel)
-
+  
 
 def process():
 

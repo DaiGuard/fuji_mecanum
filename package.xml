@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>mecanum_wheel_description</name>
+  <name>fuji_mecanum</name>
   <version>0.0.0</version>
-  <description>The mecanum_wheel_description package</description>
+  <description>The fuji_mecanum package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="dai_guard@todo.todo">dai_guard</maintainer>
+  <maintainer email="zenith.or.w@gmail.com">dai_guard</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
@@ -19,7 +19,7 @@
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
   <!-- Optional attribute type can be: website, bugtracker, or repository -->
   <!-- Example: -->
-  <!-- <url type="website">http://wiki.ros.org/mecanum_wheel_description</url> -->
+  <!-- <url type="website">http://wiki.ros.org/fuji_mecanum</url> -->
 
 
   <!-- Author tags are optional, multiple are allowed, one per tag -->

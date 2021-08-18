@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <robot name="mecanum_wheel_robot" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find mecanum_wheel_description)/urdf/mecanum_wheel_macro.xacro" />
+  <xacro:include filename="$(find fuji_mecanum)/urdf/mecanum_wheel_macro.xacro" />
 
   <link name="base_link">
     <visual>
