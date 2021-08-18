@@ -44,7 +44,7 @@ How to build fuji mecanum in your robot.
 - Gazebo simulation
 
   ![mecanum_robot](https://user-images.githubusercontent.com/26181834/129851426-2e3568eb-f340-41ce-9c6a-84ec9c883126.gif)
-  
+
   ```bash
   # Gazemo GUI launch
   $ roslaunch fuji_mecanum gazebo_test_robot_launch
