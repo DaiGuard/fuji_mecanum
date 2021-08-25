@@ -38,28 +38,28 @@
   <xacro:mecanum_wheel name="rear_right"  side="-1" interface="hardware_interface/EffortJointInterface"/>
   <xacro:mecanum_wheel name="rear_left"   side="1"  interface="hardware_interface/EffortJointInterface"/>
 
-  <joint name="front_right_joint" type="continuous">    
+  <joint name="front_right_wheel_joint" type="continuous">    
     <origin xyz="0.3 -0.25 -0.1" rpy="0 0 ${pi/2}" />
     <axis xyz="1 0 0" />
     <parent link="base_link" />
     <child link="front_right_wheel_link" />    
   </joint>
 
-  <joint name="front_left_joint" type="continuous">
+  <joint name="front_left_wheel_joint" type="continuous">
     <origin xyz="0.3 0.25 -0.1" rpy="0 0 ${pi/2}" />
     <axis xyz="1 0 0" />
     <parent link="base_link" />
     <child link="front_left_wheel_link" />
   </joint>
 
-  <joint name="rear_right_joint" type="continuous">
+  <joint name="rear_right_wheel_joint" type="continuous">
     <origin xyz="-0.3 -0.25 -0.1" rpy="0 0 ${pi/2}" />
     <axis xyz="1 0 0" />
     <parent link="base_link" />
     <child link="rear_right_wheel_link" />
   </joint>
 
-  <joint name="rear_left_joint" type="continuous">
+  <joint name="rear_left_wheel_joint" type="continuous">
     <origin xyz="-0.3 0.25 -0.1" rpy="0 0 ${pi/2}" />
     <axis xyz="1 0 0" />
     <parent link="base_link" />

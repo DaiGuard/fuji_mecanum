@@ -9,12 +9,12 @@
     <xacro:wheel_link name="${name}" side="${side}" />    
     <xacro:rollers_link name="${name}" side="${side}" />
 
-    <transmission name="${name}_trans">
+    <transmission name="${name}_wheel_trans">
       <type>transmission_interface/SimpleTransmission</type>
-      <joint name="${name}_joint">
+      <joint name="${name}_wheel_joint">
         <hardwareInterface>${interface}</hardwareInterface>
       </joint>
-      <actuator name="${name}_motor">
+      <actuator name="${name}_wheel_motor">
         <hardwareInterface>${interface}</hardwareInterface>
         <mechanismReduction>1</mechanismReduction>
       </actuator>

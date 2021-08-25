@@ -4,20 +4,20 @@ joint_state_controller:
 
 front_right_controller:
   type: effort_controllers/JointVelocityController
-  joint: front_right_joint  
+  joint: front_right_wheel_joint  
   pid: {p: 10.0, i: 0.01, d: 0.0}
 
 front_left_controller:
   type: effort_controllers/JointVelocityController
-  joint: front_left_joint  
+  joint: front_left_wheel_joint  
   pid: {p: 10.0, i: 0.01, d: 0.0}
 
 rear_right_controller:
   type: effort_controllers/JointVelocityController
-  joint: rear_right_joint  
+  joint: rear_right_wheel_joint  
   pid: {p: 10.0, i: 0.01, d: 0.0}
 
 rear_left_controller:
   type: effort_controllers/JointVelocityController
-  joint: rear_left_joint  
+  joint: rear_left_wheel_joint  
   pid: {p: 10.0, i: 0.01, d: 0.0}
