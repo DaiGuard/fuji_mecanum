@@ -42,12 +42,23 @@
         <xacro:roller_origin th="${radians(360/num*(loop-1))}" side="${side}"/>
         <parent link="${name}_wheel_link" />
         <child link="${name}_roller${loop}_link" />
-        <dynamics damping="0.01" friction="0.0001" />        
+        <dynamics damping="0.001" friction="0.0001" />        
       </joint>
 
+      <transmission name="$${name}_roller${loop}_trans">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="${name}_roller${loop}_joint">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>          
+        </joint>
+        <actuator name="${name}_roller${loop}_motor">
+          <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>          
+          <mechanismReduction>1</mechanismReduction>
+        </actuator>
+      </transmission>
+
       <gazebo reference="${name}_roller${loop}_link">
-        <mu1 value="0.6"/>
-        <mu2 value="0.6"/>
+        <mu1 value="0.8"/>
+        <mu2 value="0.8"/>
         <kp value="10000000.0" />
         <kd value="1.0" />
         <fdir1 value="0 1 0"/>
