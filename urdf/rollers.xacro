@@ -40,6 +40,7 @@
 
       <joint name="${name}_roller${loop}_joint" type="continuous">
         <xacro:roller_origin th="${radians(360/num*(loop-1))}" side="${side}"/>
+        <axis xyz="1 0 0"/>
         <parent link="${name}_wheel_link" />
         <child link="${name}_roller${loop}_link" />
         <dynamics damping="0.001" friction="0.0001" />        
